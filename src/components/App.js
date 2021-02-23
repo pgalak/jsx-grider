@@ -1,32 +1,25 @@
 import React from 'react'
 
-import ImageList from './ImageList';
-import unsplash from '../api/unsplash'
 import SearchBar from './SearchBar';
-import { accessKey } from '../accessKey';
+import youtube from '../api/youtube'
 
 class App extends React.Component {
-  state = { images: [] };
-
-  onSearchSubmit = async(term) => {  
-    const response = await unsplash.get('/search/photos', {
-      params: { 
-        client_id: accessKey,
-        query: term,
-       }
+  onTermSubmit = term => {
+    youtube.get('/search', {
+      params: {
+        q: term
+      }
     })
-
-    this.setState({ images: response.data.results })
   }
 
   render() {
     return (
-      <div className="ui container" style={{ marginTop: '10px' }}>
-        <SearchBar onSubmit={this.onSearchSubmit}/>
-        <ImageList images={this.state.images}/>
+      <div className="ui container">
+        <SearchBar onFormSubmit={this.onTermSubmit}/>
       </div>
     )
   }
 }
+
 
 export default App
