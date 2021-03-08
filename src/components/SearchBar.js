@@ -6,7 +6,7 @@ const SearchBar = ({ onFormSubmit }) => {
   const onSubmit = event => {
     event.preventDefault();
 
-    onFormSubmit(this.state.term)
+    onFormSubmit(term)
   }
 
   return (
