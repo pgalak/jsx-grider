@@ -1,6 +1,5 @@
-export const selectSong = (song) => {
+export const fetchPosts = () => {
   return {
-    type: 'SONG_SELECTED',
-    payload: song
+    type: 'FETCH_POSTS'
   }
 }
